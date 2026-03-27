@@ -1,13 +1,15 @@
 package main
 
 import (
+	"bufio"
 	"fmt"
+	"os"
+	"strconv"
+	"strings"
 )
 
 func main() {
-	op := ""
-	left := 0
-	right := 0
+	reader := bufio.NewReader(os.Stdin)
 	guide := ""
 	isOver := false
 	yORn := ""
@@ -27,11 +29,22 @@ func main() {
 		fmt.Println("Type your operation")
 
 		for isOver != true {
-			fmt.Scan(&op, &left, &right)
-			// if left >= 0 || right <= 9 {
-			// 	fmt.Println("Usage Example: add <num> <num>. Give an operation followed by two numbers (add 1 2)")
-			// 	continue
-			// }
+			line, _ := reader.ReadString('\n')
+			line = strings.TrimSpace(line)
+
+			parts := strings.Fields(line)
+			if len(parts) != 3 {
+				fmt.Println("Wrong number of arguments. Usage example: add <num> <num> (eg, add 1 2)")
+				continue
+			}
+			op := parts[0]
+			left, err1 := strconv.Atoi(parts[1])
+			right, err2 := strconv.Atoi(parts[2])
+
+			if err1 != nil || err2 != nil {
+				fmt.Println("Arguments must be numbers. Usage example: add 1 5")
+				continue
+			}
 
 			switch op {
 			case "add" :
@@ -46,6 +59,8 @@ func main() {
 				continue
 	        }
 				fmt.Println(div(left, right));
+			default :
+			    fmt.Println("Unknown command. Type 'help' for available operations")
 			}
 
 			fmt.Println("Do you wish to continue [yes/quit]")
