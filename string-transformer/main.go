@@ -10,7 +10,7 @@ import (
 	"fmt"
 	"os"
 	"strings"
-	// "unicode"
+	"unicode"
 )
 
 // Your program accepts a command followed by a string and applies the correct transformation.
@@ -33,7 +33,7 @@ func main() {
 	if command == "lower" {fmt.Println(lower(text))}
 	if command == "cap" {fmt.Println(cap(text))}
 	if command == "title" {fmt.Println(title(text))}
-	// if command == "snake" {fmt.Println(snake(text))}
+	if command == "snake" {fmt.Println(snake(text))}
 	// if command == "reverse" {fmt.Println(reverse(text))}
 }
 
@@ -71,27 +71,27 @@ func title(s string) string {
 	return strings.Join(words, " ")
 }
 
-// func snake(s string) string {
-// 	words := strings.Fields(s)
-// 	newSlice := []string{}
-// 	newString := ""
+func snake(s string) string {
+	words := strings.Fields(s)
 
-// 	for i, word := range words {
-// 		for _, v := range word {
-// 			if unicode.IsPunct(v) {
-// 				continue
-// 			} else {
-// 				newSlice = append(newSlice, string(v))
-// 			}
-// 			newString = strings.Join(newSlice, "")
-// 			words[i] = newString
-// 		}
-// 	}
+	for i, word := range words {
+		newSlice := []string{}
+		newString := ""
+		for _, v := range word {
+			if unicode.IsPunct(v) {
+				continue
+			} else {
+				newSlice = append(newSlice, string(v))
+			}
+			newString = strings.Join(newSlice, "")
+			words[i] = newString
+		}
+	}
 	
-// 	camelCase := strings.Join(words, "_")
+	camelCase := strings.Join(words, "_")
 
-// 	return strings.TrimSpace(strings.ToLower(camelCase))
-// }
+	return strings.TrimSpace(strings.ToLower(camelCase))
+}
 
 // func reverse(s string) string {
 // 	reverse := []string{}
