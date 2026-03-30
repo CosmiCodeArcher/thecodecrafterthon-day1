@@ -54,6 +54,9 @@ func cap(s string) string {
 	return strings.Join(words, " ")
 }
 
+// [Threat, Level, of, Elevated,]
+
+
 func title(s string) string {
 	words := strings.Fields(s)
 	connectors := []string{"a", "an", "the", "and", "but", "or", "for", "nor", "on", "at", "to", "by", "in", "of", "up", "as", "is", "it"}
@@ -93,13 +96,15 @@ func snake(s string) string {
 	return strings.TrimSpace(strings.ToLower(camelCase))
 }
 
-// func reverse(s string) string {
-// 	reverse := []string{}
+func reverse(s string) string {
+	words := strings.Fields(s)
 
-// 	for i := len(s) - 1; i >= 0; i-- {
-// 		reverse = append(reverse, string(s[i]))
-// 	}
-
-// 	// return strings.Join(words, " ")
-// 	return strings.Join(reverse, "")
-// }
+	for i, word := range words {
+		reverse := []string{}
+		for j = len(word)-1; i >=0; j++{
+			reverse = append(reverse, word[j])
+			words[i] = 
+		}
+		
+	}
+}
