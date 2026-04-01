@@ -29,6 +29,13 @@ func main() {
 	textSlice := parts[1:]
 	text := strings.Join(textSlice, " ")
 
+	validCommands := []string{"upper", "lower", "cap", "title", "snake", "reverse"}
+
+	for i, r := range validCommands{
+		if command != validCommands[i] {i++}
+		if r == validCommands[len(validCommands)-1] {fmt.Println("✗ Unknown command:", command); fmt.Println(" Valid commands: upper, lower, cap, title, snake, reverse, exit")}
+	}
+
 	if command == "upper" {fmt.Println(upper(text))}
 	if command == "lower" {fmt.Println(lower(text))}
 	if command == "cap" {fmt.Println(cap(text))}
