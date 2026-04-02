@@ -70,6 +70,7 @@ func main() {
 	outputLines = append(outputLines, summary)
 
 	os.WriteFile(output, []byte(strings.Join(outputLines, "\n")), 0644)
+	print(summary)
 }
 
 func pipe(s string) string {
