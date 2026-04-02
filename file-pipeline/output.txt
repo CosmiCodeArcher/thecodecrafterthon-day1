@@ -1,0 +1,19 @@
+This Is An All Caps Line
+Another Example Of Caps Text
+Yet Another Line In All Caps
+
+THIS IS A LOWERCASE LINE
+rehtona esacrewol elpmaxe ereh ESREVER
+TESTING LOWERCASE INPUT LINES
+
+THIS LINE HAS LEADING SPACES
+THIS LINE HAS TRAILING SPACES
+THIS LINE HAS BOTH LEADING AND TRAILING SPACES
+
+-----
+----------
+
+
+MIXED case should stay as is
+SPACED LOWERCASE LINE
+All Caps With Extra Spaces

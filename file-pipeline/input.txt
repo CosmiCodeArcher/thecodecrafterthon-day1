@@ -3,11 +3,11 @@ ANOTHER EXAMPLE OF CAPS TEXT
 YET ANOTHER LINE IN ALL CAPS
 
 this is a lowercase line
-another lowercase example here
+another lowercase example here REVERSE
 testing lowercase input lines
 
    this line has leading spaces
-this line has trailing spaces    
+this line has trailing spaces      
    this line has both leading and trailing spaces    
 
 -----

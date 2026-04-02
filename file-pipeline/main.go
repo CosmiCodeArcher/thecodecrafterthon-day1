@@ -39,4 +39,58 @@
 
 package main
 
-func main() {}
+import (
+	"os"
+	"strings"
+)
+
+func main() {
+	input, _ := os.ReadFile("input.txt")
+	lines := strings.Split(string(input), "\n")
+	for i := range lines {
+		lines[i] = pipe(lines[i])
+	}
+	os.WriteFile("output.txt", []byte(strings.Join(lines, "\n")), 0644)
+}
+
+func pipe(s string) string {
+	result := []string{}
+	if s == strings.ToUpper(s) {
+		s = cap(s)
+	}
+	if s == strings.ToLower(s) {
+		s = strings.ToUpper(s)
+	}
+	if strings.Contains(s, "REVERSE") {
+		s = reverse(s)
+	}
+	s = strings.TrimSpace(s)
+
+	if strings.Trim(s, "-") != "" && strings.Trim(s, " ") != "" {
+		result = append(result, s)
+	}
+
+	return s
+}
+
+func cap(s string) string {
+	words := strings.Fields(s)
+
+	for i, word := range words {
+		words[i] = strings.ToUpper(string(word[0])) + strings.ToLower(string(word[1:]))
+	}
+	return strings.Join(words, " ")
+}
+
+func reverse(s string) string {
+	words := strings.Fields(s)
+
+	for i, word := range words {
+		reverse := []string{}
+		for j := len(word) - 1; j >= 0; j-- {
+			reverse = append(reverse, string(word[j]))
+		}
+		words[i] = strings.Join(reverse, "")
+	}
+	return strings.Join(words, " ")
+}
