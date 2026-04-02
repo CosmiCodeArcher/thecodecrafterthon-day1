@@ -1,3 +1,5 @@
+(THE-INTERFACE SENTINEL FIELD REPORT — PROCESSED)
+
 This Is An All Caps Line
 Another Example Of Caps Text
 Yet Another Line In All Caps
@@ -10,3 +12,15 @@ THIS LINE HAS BOTH LEADING AND TRAILING SPACES
 MIXED case should stay as is
 SPACED LOWERCASE LINE
 All Caps With Extra Spaces
+
+==================== 
+Lines read: 19
+Lines written: 13
+Lines removed: 6
+Rules applied : [
+1. Convert ALL CAPS lines to Title Case, 
+2. Convert all lowercase lines to uppercase, 
+3. Trim all leading and trailing whitespace, 
+4. Reverse the words in any line that contains the word REVERSE, 
+5. Remove lines that are only dashes or blanks
+]

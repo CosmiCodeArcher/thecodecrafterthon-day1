@@ -41,13 +41,23 @@ package main
 
 import (
 	"os"
+	"fmt"
 	"strings"
 )
 
 func main() {
-	input, _ := os.ReadFile("input.txt")
+	if len(os.Args) != 3 {
+		fmt.Println("Usage: go run . <input_file> <output_file>")
+		return
+	}
+
+	input, _ := os.ReadFile(os.Args[1])
+	output := os.Args[2]
+
 	rawLines := strings.Split(string(input), "\n")
 	outputLines := []string{}
+	header := fmt.Sprintf("(THE-INTERFACE SENTINEL FIELD REPORT — PROCESSED)\n")
+	outputLines = append(outputLines, header)
 
 	for _, line := range rawLines {
 		transformed := pipe(line)
@@ -56,7 +66,10 @@ func main() {
 		}
 	}
 
-	os.WriteFile("output.txt", []byte(strings.Join(outputLines, "\n")), 0644)
+	summary := fmt.Sprintf("\n==================== \nLines read: %d\nLines written: %d\nLines removed: %d\nRules applied : [\n1. Convert ALL CAPS lines to Title Case, \n2. Convert all lowercase lines to uppercase, \n3. Trim all leading and trailing whitespace, \n4. Reverse the words in any line that contains the word REVERSE, \n5. Remove lines that are only dashes or blanks\n]", len(rawLines), len(outputLines), len(rawLines)-len(outputLines))
+	outputLines = append(outputLines, summary)
+
+	os.WriteFile(output, []byte(strings.Join(outputLines, "\n")), 0644)
 }
 
 func pipe(s string) string {
